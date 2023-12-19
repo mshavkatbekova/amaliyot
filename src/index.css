@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/inter-v13-latin-regular.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/inter-v13-latin-500.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  src: url("./fonts/inter-v13-latin-600.woff2") format("woff2");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/inter-v13-latin-700.woff2") format("woff2");
+}
+
+@layer components {
+  *:focus {
+    @apply outline-4 outline-dotted outline-cyan-400;
+  }
+
+  .max-container {
+    width: 100%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    @apply px-10;
+  }
+  .btn {
+    @apply py-1 px-2 md:px-3 md:py-2  rounded-md text-white;
+  }
+  html,
+  body {
+    @apply h-full;
+  }
+  #root {
+    @apply flex flex-col h-full;
+  }
+
+  main {
+    @apply grow;
+  }
+  .animation {
+    @apply duration-300 transition;
+  }
+
+  .form-label {
+    @apply block;
+  }
+
+  .form-label span {
+    @apply block
+    text-black
+    mb-1 font-semibold;
+  }
+
+  .form-label input {
+    @apply border-2 border-solid border-cyan-400 px-2 py-3 rounded-md w-full text-black font-sans
+  }
+}
