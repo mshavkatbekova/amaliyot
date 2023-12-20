@@ -2,12 +2,19 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layout/RootLayout";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
+import ProtectedRoutes from "./components/ProtectedRoutes";
+import { useGlobalContext } from "./hooks/useGlobalContext";
 
 function App() {
+  const {user, isAuthReady, dispatch} = useGlobalContext()
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: <RootLayout />,
+      element: (
+        <ProtectedRoutes user={user}>
+          <RootLayout />,
+        </ProtectedRoutes>
+      ),
     },
     {
       path: "/login",
