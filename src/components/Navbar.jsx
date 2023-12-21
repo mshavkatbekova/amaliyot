@@ -1,6 +1,8 @@
 import React from "react";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Navbar() {
+  const {user} = useGlobalContext()
   return (
     <header className="bg-neutral-200 py-3 md:py-4 dark:bg-slate-700">
       <div className="max-container flex flex-col md:flex-row items-center md:justify-between ">
@@ -12,7 +14,7 @@ function Navbar() {
         </a>
         <nav className="text-center md:text-left md:flex md:items-center md:gap-4">
           <p className="mb-4 md:mb-0 md:font-medium dark:text-slate-200">
-            Welcome, Munisa
+            Welcome, {user.displayName}
           </p>
           <div className="flex gap-4">
             <button className=" btn bg-orange-400 animation hover:bg-orange-300">

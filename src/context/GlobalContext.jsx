@@ -22,5 +22,9 @@ export function GlobalContextProvider({ children }) {
     user: null,
     isAuthReady: false,
   });
-  return <GlobalContext.Provider>{children}</GlobalContext.Provider>;
+  return (
+    <GlobalContext.Provider value={{ ...state, dispatch  }}>
+      {children}
+    </GlobalContext.Provider>
+  );
 }
