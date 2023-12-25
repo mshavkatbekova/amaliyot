@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import SignupBgVideo from "../videos/signup-bg-video.mp4";
 import useSignup from "../hooks/useSignup";
 import { useRef } from "react";
+import { useLogin } from "../hooks/useLogin";
 
 function Signup() {
   const name = useRef();
@@ -9,11 +10,17 @@ function Signup() {
   const password = useRef();
   const form = useRef();
   const { isPending, error, signup } = useSignup();
+  const { enterWithGoogle } = useLogin();
   const handleSubmit = (e) => {
     e.preventDefault();
     signup(name.current.value, email.current.value, password.current.value);
 
     form.current.reset();
+  };
+
+  const handleEnterWithGoogle = (e) => {
+    e.preventDefault();
+    enterWithGoogle();
   };
   return (
     <div className="h-screen relative">
@@ -50,6 +57,12 @@ function Signup() {
             </label>
             <button className="btn bg-cyan-400 font-bold">
               {isPending ? "Loading..." : "Signup"}
+            </button>
+            <button
+              onClick={handleEnterWithGoogle}
+              className="btn bg-slate-800 font-bold"
+            >
+              Google
             </button>
             <Link
               to="/login"
