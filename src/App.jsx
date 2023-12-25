@@ -3,14 +3,19 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import RootLayout from "./layout/RootLayout";
+import Home from "./pages/Home";
+import { useEffect } from "react";
 import Login from "./pages/Login";
+import Create from "./pages/Create";
 import Signup from "./pages/Signup";
+import RootLayout from "./layout/RootLayout";
+import { auth } from "./firebase/FirebaseConfig";
+import { onAuthStateChanged } from "firebase/auth";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { useGlobalContext } from "./hooks/useGlobalContext";
-import { useEffect } from "react";
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase/FirebaseConfig";
+
+
+
 
 function App() {
   const { user, isAuthReady, dispatch } = useGlobalContext();
@@ -18,11 +23,19 @@ function App() {
   const routes = createBrowserRouter([
     {
       path: "/",
-      element: (
-        <ProtectedRoutes user={user}>
-          <RootLayout />,
-        </ProtectedRoutes>
-      ),
+      element:  <ProtectedRoutes user={user}>
+          <RootLayout />
+        </ProtectedRoutes>,
+      children: [
+        {
+          index: true,
+          element: <Home/>
+        },
+        {
+          path: "/create",
+          element: <Create/>
+        },
+      ],
     },
     {
       path: "/login",

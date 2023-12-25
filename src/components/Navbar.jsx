@@ -3,6 +3,7 @@ import { auth } from "../firebase/FirebaseConfig";
 import { useGlobalContext } from "../hooks/useGlobalContext";
 import { useState } from "react";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   const { user } = useGlobalContext();
@@ -62,12 +63,12 @@ function Navbar() {
             >
              <div className="flex gap-3 animation items-center"> {isPending ? spinner() : ""} Logout</div>
             </button>
-            <a
+            <Link
               className=" btn bg-emerald-400 animation hover:bg-emerald-300"
-              href=""
+              to="/create"
             >
               Create
-            </a>
+            </Link>
           </div>
         </nav>
       </div>
