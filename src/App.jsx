@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import { useEffect } from "react";
 import Login from "./pages/Login";
 import Create from "./pages/Create";
+import Recipe from "./pages/Recipe";
 import Signup from "./pages/Signup";
 import RootLayout from "./layout/RootLayout";
 import { auth } from "./firebase/FirebaseConfig";
@@ -14,26 +15,29 @@ import { onAuthStateChanged } from "firebase/auth";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import { useGlobalContext } from "./hooks/useGlobalContext";
 
-
-
-
 function App() {
   const { user, isAuthReady, dispatch } = useGlobalContext();
 
   const routes = createBrowserRouter([
     {
       path: "/",
-      element:  <ProtectedRoutes user={user}>
+      element: (
+        <ProtectedRoutes user={user}>
           <RootLayout />
-        </ProtectedRoutes>,
+        </ProtectedRoutes>
+      ),
       children: [
         {
           index: true,
-          element: <Home/>
+          element: <Home />,
         },
         {
           path: "/create",
-          element: <Create/>
+          element: <Create />,
+        },
+        {
+          path: "recipe/:id",
+          element: <Recipe />,
         },
       ],
     },

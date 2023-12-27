@@ -1,9 +1,9 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../firebase/FirebaseConfig";
-import { useGlobalContext } from "../hooks/useGlobalContext";
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/FirebaseConfig";
+import { useGlobalContext } from "../hooks/useGlobalContext";
 
 function Navbar() {
   const { user } = useGlobalContext();

@@ -6,7 +6,7 @@ function RootLayout() {
   return (
     <>
       <Navbar />
-      <main>
+      <main className="py-10">
         <Outlet />
       </main>
       <Footer />

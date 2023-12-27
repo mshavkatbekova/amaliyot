@@ -1,13 +1,13 @@
+import { db } from "../firebase/FirebaseConfig";
 import React, { useEffect, useState } from "react";
 import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase/FirebaseConfig";
 
 function useCollection() {
   const [documents, setDocuments] = useState(null);
   const [isPending, setIsPending] = useState(false)
   const [error, setError] = useState(false)
   useEffect(() => {
-    setIsPending(true)
+    setIsPending(true) 
     const unsubscribe = onSnapshot(
       collection(db, "recipies"),
       (snapshot) => {
